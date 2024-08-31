@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Farmers' Marketplace</title>
+    <title>Farmer's Market App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <h1>Local Farmers' Marketplace</h1>
-        <div id="user-type-selection">
-            <button onclick="selectUserType('farmer')">I'm a Farmer</button>
-            <button onclick="selectUserType('customer')">I'm a Customer</button>
+<body class="bg-gray-100 p-4">
+    <div id="app" class="max-w-md mx-auto">
+        <div id="user-type-selection" class="space-y-4">
+            <h2 class="text-2xl font-bold mb-4">Select User Type</h2>
+            <button onclick="selectUserType('farmer')" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Farmer</button>
+            <button onclick="selectUserType('customer')" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Customer</button>
         </div>
-        <div id="farmer-section" style="display: none;">
-            <h2>Farmer Dashboard</h2>
-            <button onclick="showAddListingForm()">Add/Update Listing</button>
-            <button onclick="viewMyListings()">View My Listings</button>
-            <div id="add-listing-form" style="display: none;">
-                <!-- Add listing form will be dynamically populated -->
-            </div>
+
+        <div id="farmer-section" class="hidden space-y-4">
+            <h2 class="text-2xl font-bold mb-4">Farmer Dashboard</h2>
+            <button onclick="showAddListingForm()" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Add/Update Listing</button>
+            <div id="add-listing-form" class="hidden"></div>
+            <button onclick="viewMyListings()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">View My Listings</button>
             <div id="my-listings"></div>
         </div>
-        <div id="customer-section" style="display: none;">
-            <h2>Customer Dashboard</h2>
-            <button onclick="browseVegetables()">Browse Vegetables</button>
-            <button onclick="showSearchForm()">Search Produce</button>
-            <button onclick="manageSubscriptions()">Manage Subscriptions</button>
+
+        <div id="customer-section" class="hidden space-y-4">
+            <h2 class="text-2xl font-bold mb-4">Customer Dashboard</h2>
+            <button onclick="browseVegetables()" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Browse Vegetables</button>
+            <button onclick="showSearchForm()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search Produce</button>
+            <div id="search-form" class="hidden space-y-2">
+                <input type="text" id="search-input" placeholder="Search vegetables" class="w-full p-2 border rounded">
+                <button onclick="searchProduce()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search</button>
+            </div>
             <div id="vegetable-listings"></div>
-            <div id="search-form" style="display: none;">
-                <input type="text" id="search-input" placeholder="Enter produce name">
-                <button onclick="searchProduce()">Search</button>
-            </div>
-            <div id="subscription-management" style="display: none;">
-                <!-- Subscription checkboxes will be dynamically populated -->
-            </div>
+            <button onclick="manageSubscriptions()" class="w-full p-2 bg-purple-500 text-white rounded hover:bg-purple-600">Manage Subscriptions</button>
+            <div id="subscription-management" class="hidden"></div>
         </div>
     </div>
     <script src="app.js"></script>
