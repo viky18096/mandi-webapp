@@ -6,33 +6,62 @@
     <title>Farmer's Market App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            @apply w-full p-3 rounded-lg font-semibold transition-all duration-300 ease-in-out;
+        }
+        .btn-primary {
+            @apply bg-green-500 text-white hover:bg-green-600;
+        }
+        .btn-secondary {
+            @apply bg-blue-500 text-white hover:bg-blue-600;
+        }
+        .btn-tertiary {
+            @apply bg-purple-500 text-white hover:bg-purple-600;
+        }
+        .input {
+            @apply w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 p-4">
-    <div id="app" class="max-w-md mx-auto">
-        <div id="user-type-selection" class="space-y-4">
-            <h2 class="text-2xl font-bold mb-4">Select User Type</h2>
-            <button onclick="selectUserType('farmer')" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Farmer</button>
-            <button onclick="selectUserType('customer')" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Customer</button>
+    <div id="app" class="container">
+        <div id="user-type-selection" class="space-y-6">
+            <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome to Farmer's Market</h2>
+            <button onclick="selectUserType('farmer')" class="btn btn-primary">I'm a Farmer</button>
+            <button onclick="selectUserType('customer')" class="btn btn-secondary">I'm a Customer</button>
         </div>
 
-        <div id="farmer-section" class="hidden space-y-4">
-            <h2 class="text-2xl font-bold mb-4">Farmer Dashboard</h2>
-            <button onclick="showAddListingForm()" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Add/Update Listing</button>
+        <div id="farmer-section" class="hidden space-y-6">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Farmer Dashboard</h2>
+            <button onclick="showAddListingForm()" class="btn btn-primary">Add/Update Listing</button>
             <div id="add-listing-form" class="hidden"></div>
-            <button onclick="viewMyListings()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">View My Listings</button>
+            <button onclick="viewMyListings()" class="btn btn-secondary">View My Listings</button>
             <div id="my-listings"></div>
         </div>
 
-        <div id="customer-section" class="hidden space-y-4">
-            <h2 class="text-2xl font-bold mb-4">Customer Dashboard</h2>
-            <button onclick="browseVegetables()" class="w-full p-2 bg-green-500 text-white rounded hover:bg-green-600">Browse Vegetables</button>
-            <button onclick="showSearchForm()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search Produce</button>
-            <div id="search-form" class="hidden space-y-2">
-                <input type="text" id="search-input" placeholder="Search vegetables" class="w-full p-2 border rounded">
-                <button onclick="searchProduce()" class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Search</button>
+        <div id="customer-section" class="hidden space-y-6">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Customer Dashboard</h2>
+            <button onclick="browseVegetables()" class="btn btn-primary">Browse Vegetables</button>
+            <button onclick="showSearchForm()" class="btn btn-secondary">Search Produce</button>
+            <div id="search-form" class="hidden space-y-4">
+                <input type="text" id="search-input" placeholder="Search vegetables" class="input">
+                <button onclick="searchProduce()" class="btn btn-secondary">Search</button>
             </div>
             <div id="vegetable-listings"></div>
-            <button onclick="manageSubscriptions()" class="w-full p-2 bg-purple-500 text-white rounded hover:bg-purple-600">Manage Subscriptions</button>
+            <button onclick="manageSubscriptions()" class="btn btn-tertiary">Manage Subscriptions</button>
             <div id="subscription-management" class="hidden"></div>
         </div>
     </div>
